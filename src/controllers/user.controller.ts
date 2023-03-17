@@ -8,6 +8,12 @@ import { JWT_SECRET_KEY } from "../configs/constants";
 
 const register = async (req: UserRegisterRequest, res: Response) => {
   try {
+    /* Check user existed */
+    const userGet = await User.findOne({ email: req.body.email });
+    if (userGet) {
+      return BadRequest(res, messageGeneral.EMAIL_EXISTED);
+    }
+
     const user = new User(req.body);
     await user.save();
 
@@ -36,7 +42,7 @@ const login = async (req: UserLoginRequest, res: Response) => {
     };
     /* Generate JWT token */
     const jwtToken = jwtEncode(data, JWT_SECRET_KEY);
-    
+
     const response = {
       token: jwtToken
     };

@@ -9,4 +9,5 @@ export const messageGeneral = {
   PASSWORD_NOT_MATCH: "password confirm does not match",
   GENDER_INVALID: "gender must be one of the following values: 'male', 'female', 'undefined'",
   PASSWORD_WRONG: "email or password is wrong",
+  EMAIL_EXISTED: "email already registered for another account",
 };
