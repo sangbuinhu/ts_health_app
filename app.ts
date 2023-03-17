@@ -4,6 +4,7 @@ import "dotenv/config";
 import express from "express";
 import http from "http";
 import mongoose from "mongoose";
+import { router } from "./src/routers";
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use("/api/v1", router);
 
 const port = process.env.PORT || 3000;
 const MONGODB_URL = process.env.MONGODB_URL || "";
