@@ -19,3 +19,7 @@ export const OK = (res: Response, data: any) => {
 export const Created = (res: Response, data: any) => {
   return res.status(201).json(data);
 };
+
+export const NotFound = (res: Response, name: string) => {
+  return res.status(404).json({ message: `${name} not found` });
+};

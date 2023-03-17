@@ -1,4 +1,3 @@
-
 import { InferType, date, object, ref, string } from "yup";
 import { messageGeneral } from "../utils/message.util";
 
@@ -23,4 +22,14 @@ export const userRegisterSchema = object({
   })
 });
 
+export const userLoginSchema = object({
+  body: object({
+    email: string().trim()
+      .required(messageGeneral.EMAIL_REQUIRED),
+    password: string().trim()
+      .required(messageGeneral.PASSWORD_REQUIRED)
+  })
+});
+
 export interface UserRegisterRequest extends InferType<typeof userRegisterSchema> { }
+export interface UserLoginRequest extends InferType<typeof userLoginSchema> { }
