@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 app.use("/api/v1", router);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const MONGODB_URL = process.env.MONGODB_URL || "";
 
 const server = http.createServer(app);
