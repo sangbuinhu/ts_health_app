@@ -14,3 +14,9 @@ mealRouter.post(
   multipartMiddleware,
   mealController.create
 );
+
+mealRouter.get(
+  "/",
+  userTokenRequired,
+  mealController.getAll
+);

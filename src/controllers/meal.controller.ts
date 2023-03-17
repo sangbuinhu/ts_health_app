@@ -1,7 +1,7 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { AWS_S3_BUCKET_MEAL, S3_URL } from "../configs/constants";
 import { S3Manager } from "../extenal.services/s3.client";
-import { Created, InternalServerError } from "../middlewares/response.middleware";
+import { Created, InternalServerError, OK } from "../middlewares/response.middleware";
 import { Meal } from "../models";
 import { MealCreateRequest } from "../requests/meal.request";
 
@@ -32,6 +32,17 @@ const create = async (req: MealCreateRequest, res: Response) => {
   }
 };
 
+const getAll = async (req: Request, res: Response) => {
+  try {
+    const meals = await Meal.find().sort("-date session");
+    return OK(res, meals);
+  } catch (error) {
+    console.log(error);
+    return InternalServerError(res, error);
+  }
+};
+
 export default {
-  create
+  create,
+  getAll
 };

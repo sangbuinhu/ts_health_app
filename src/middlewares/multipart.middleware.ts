@@ -24,7 +24,6 @@ export const multipartMiddleware = async (
     }
     /* Check extension */
     const extension = path.extname(image.path).toLowerCase();
-    console.log(extension);
     if (!IMAGE_EXTENTION_ACCEPTED.includes(extension)) {
       return BadRequest(res, messageMeal.IMAGE_ONLY);
     }
