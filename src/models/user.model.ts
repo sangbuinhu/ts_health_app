@@ -2,7 +2,7 @@ import crypto from "crypto";
 import { Schema, Types } from "mongoose";
 import modelOptions from "./model.options";
 
-export interface IAdmin {
+export interface IUser {
   id: Types.ObjectId;
   name: string;
   gender?: string;
@@ -16,7 +16,7 @@ export interface IAdmin {
   validPassword: Function;
 }
 
-export const userSchema = new Schema<IAdmin>({
+export const userSchema = new Schema<IUser>({
   name: {
     type: String,
     required: true
