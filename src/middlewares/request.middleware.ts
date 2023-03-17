@@ -13,7 +13,7 @@ export const validateRequest = (schema: any) => async (
       params: req.params
     });
     return next();
-  } catch (err: any) {
-    return BadRequest(res, err.message);
+  } catch (error: any) {
+    return BadRequest(res, error.message);
   }
 };

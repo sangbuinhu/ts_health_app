@@ -1,6 +1,8 @@
-import express from "express";
+import { Router } from "express";
+import { mealRouter } from "./meal.router";
 import { userRouter } from "./user.route";
 
-export const router = express.Router();
+export const router = Router();
 
 router.use("/users", userRouter);
+router.use("/meals", mealRouter);

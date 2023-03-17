@@ -5,9 +5,18 @@ import express from "express";
 import http from "http";
 import mongoose from "mongoose";
 import { router } from "./src/routers";
+import formData from "express-form-data";
+import os from "os";
+
+const options = {
+  uploadDir: os.tmpdir(),
+  autoClean: true
+};
 
 const app = express();
 
+app.use(formData.parse(options));
+app.use(formData.format());
 
 app.use(cors());
 app.use(express.json());
@@ -25,7 +34,7 @@ mongoose.connect(MONGODB_URL).then(() => {
   server.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
-}).catch((err) => {
-  console.log({ err });
+}).catch((error) => {
+  console.log({ error });
   process.exit(1);
 });

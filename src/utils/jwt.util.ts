@@ -8,7 +8,7 @@ interface JwtData {
 
 const jwtSign = (data: object, secret: string): string => {
   return jsonwebtoken.sign(data, secret, {
-    expiresIn: JWT_EXPIRE_DAY,
+    expiresIn: JWT_EXPIRE_DAY + "d",
   });
 };
 
@@ -39,9 +39,9 @@ export const jwtDecode = async (token: string, secret: string) => {
       }.${secondSecret}`;
 
     const dataDecoded = jsonwebtoken.verify(dataEncoded, secret);
-
     return dataDecoded as JwtData;
-  } catch (err) {
+  } catch (error) {
+    console.log(error);
     return null;
   }
 };

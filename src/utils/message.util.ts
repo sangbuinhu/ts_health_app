@@ -11,3 +11,16 @@ export const messageGeneral = {
   PASSWORD_WRONG: "email or password is wrong",
   EMAIL_EXISTED: "email already registered for another account",
 };
+
+export const messageMeal = {
+  DATE_REQUIRED: "date is required",
+  SESSION: "session is required",
+  SESSION_INVALID: "session must be one of the following values: 1, 2, 3, 4",
+  IMAGE_REQUIRED: 'image is required',
+  IMAGE_LARGE: 'image is too large',
+  IMAGE_ONLY: 'only image file allowed',
+};
+
+export const messageToken = {
+  TOKEN_INVALID: 'Token is invalid',
+};

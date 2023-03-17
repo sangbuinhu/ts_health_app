@@ -1,9 +1,9 @@
-import express from "express";
+import { Router } from "express";
+import userController from "../controllers/user.controller";
 import { validateRequest } from "../middlewares/request.middleware";
 import { userLoginSchema, userRegisterSchema } from "../requests/user.request";
-import userController from "../controllers/user.controller";
 
-export const userRouter = express.Router();
+export const userRouter = Router();
 
 userRouter.post(
   "/register",

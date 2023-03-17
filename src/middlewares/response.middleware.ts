@@ -1,9 +1,9 @@
 import { Response } from "express";
-import { messageGeneral } from "../utils/message.util";
+import { messageGeneral, messageToken } from "../utils/message.util";
 
-export const InternalServerError = (res: Response, err?: any) => {
-  if (err) {
-    return res.status(500).json({ message: err.message });
+export const InternalServerError = (res: Response, error?: any) => {
+  if (error) {
+    return res.status(500).json({ message: error.message });
   }
   return res.status(500).json({ message: messageGeneral.SOMETHING_WRONG });
 };
@@ -22,4 +22,9 @@ export const Created = (res: Response, data: any) => {
 
 export const NotFound = (res: Response, name: string) => {
   return res.status(404).json({ message: `${name} not found` });
+};
+
+/* Validate */
+export const Unauthorized = (res: Response) => {
+  return res.status(401).json({ message: messageToken.TOKEN_INVALID });
 };
