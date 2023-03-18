@@ -35,7 +35,9 @@ const create = async (req: MealCreateRequest, res: Response) => {
 const getAll = async (_: Request, res: Response) => {
   try {
     const meals = await Meal.find().sort("-date session");
-    return OK(res, meals);
+    return OK(res, {
+      Meals: meals
+    });
   } catch (error) {
     console.log(error);
     return InternalServerError(res, error);

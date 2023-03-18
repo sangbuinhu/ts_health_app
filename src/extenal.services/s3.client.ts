@@ -20,6 +20,7 @@ export class S3Manager {
         Key,
         Body,
         ContentType: "image/jpeg",
+        ACL: 'public-read'
       });
       await this.client.send(s3Params);
       return true;
